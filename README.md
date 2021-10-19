@@ -16,3 +16,6 @@ TradeOgre Order Books for Trading Pair
 Output:
 
 ![togre XMR-BTC Pair](./tbks.png)
+
+## Useful 
+`watch -n 10 'python3 togrebks.py BTC XMR'`
