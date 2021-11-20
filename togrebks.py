@@ -18,16 +18,17 @@ def get_tradeogre_order_books(coin1, coin2, args):
     TradeOgreBooks = 'https://tradeogre.com/api/v1/orders/%s-%s'
     to_response = requests.get(TradeOgreBooks % (coin1, coin2)) 
 
-    try:
+    if args.amount:
         trade_amt = float(args.amount)
+    if args.target:
         target_amt = float(args.target)
-    except TypeError as e:
-        if trade_amt:
-            pass
-        if not trade_amt and not target_amt:
-            trade_amt = target_amt = None
-        else:
-            target_amt=None
+        
+    if not args.amount:
+        trade_amt = None
+    if not args.target:
+        target_amt = None
+    
+  
 
     if to_response.status_code == 200:  #make sure response was succeeded
         try:
